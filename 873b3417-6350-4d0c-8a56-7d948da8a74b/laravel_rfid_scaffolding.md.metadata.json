@@ -1,0 +1,5 @@
+{
+  "artifactType":  "ARTIFACT_TYPE_WALKTHROUGH",
+  "summary":  "Step-by-step Laravel scaffolding for the RFID scan ingestion API. Covers: migration (tag_reads table), TagRead model, RfidScanController with validation, api.php route registration, verification curl command, and the optional Reverb + Echo real-time broadcast layer for Vue.",
+  "updatedAt":  "2026-07-06T06:52:19.610564Z"
+}
