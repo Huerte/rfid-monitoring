@@ -17,6 +17,7 @@ console = Console()
 
 _lock      = Lock()
 _rows: deque[TagRead] = deque(maxlen=config.DISPLAY_ROWS)
+_seen_epcs: set[str] = set()  # tracks first-seen EPCs; duplicates are dropped
 _stats: dict = {
     "total_reads":  0,
     "unique_epcs":  set(),
@@ -41,6 +42,9 @@ def record_heartbeat(sn: str, ip: str, device_ts: str = "") -> None:
 def record_tags(tags: list[TagRead]) -> None:
     with _lock:
         for tag in tags:
+            if tag.epc in _seen_epcs:
+                continue  # already recorded first detection, drop repeat
+            _seen_epcs.add(tag.epc)
             _rows.append(tag)
             _stats["total_reads"] += 1
             _stats["unique_epcs"].add(tag.epc)
