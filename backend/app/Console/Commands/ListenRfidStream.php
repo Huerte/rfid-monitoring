@@ -9,23 +9,10 @@ use PhpMqtt\Client\ConnectionSettings;
 
 class ListenRfidStream extends Command
 {
-    /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
-    protected $signature = 'rfid:listen {--host=127.0.0.1} {--port=1883} {--topic=rfid/#}';
+    protected $signature = 'rfid:listen {--host=127.0.0.1} {--port=1883} {--topic=rfid/tags}';
 
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
     protected $description = 'Listen to the MQTT stream for RFID reads and save them to the database';
 
-    /**
-     * Execute the console command.
-     */
     public function handle()
     {
         $server = $this->option('host');
@@ -71,10 +58,6 @@ class ListenRfidStream extends Command
             $this->error("Invalid JSON payload.");
             return;
         }
-
-        // Example standard payload assumed: 
-        // { "sn": "...", "data": { "tagList": [ { "epc": "...", "rssi": 42, "ant": 1, ... } ] } }
-        // Or if the topic is singular tag read: { "epc": "..." }
 
         $tagList = [];
         
