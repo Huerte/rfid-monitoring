@@ -5,8 +5,18 @@
 cd backend
 ```
 
-
 ### Then run this
 ```bash
-php artisan rfid:listen
+php artisan serve --host=0.0.0.0 --port=8000
+```
+
+### Open the raw API viewer
+Open your browser at:
+```bash
+http://127.0.0.1:8000/
+```
+
+### Raw API endpoint
+```bash
+http://127.0.0.1:8000/api/rfid-scans
 ```
