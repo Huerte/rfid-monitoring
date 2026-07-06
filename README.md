@@ -16,8 +16,6 @@ Open your browser at:
 http://127.0.0.1:8000/
 ```
 
-The root URL shows the raw `/api/rfid-scans` output with automatic refresh.
-
 ### Raw API endpoint
 ```bash
 http://127.0.0.1:8000/api/rfid-scans
