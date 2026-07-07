@@ -14,7 +14,7 @@ What to do;
 - open `System Settings`
 - find `Output Mode`, then switch on the `MQTT`. Confirm afterward.
 - go back ot `System Settings` then find `Configure Host`
-- find `HTTP Url` configure it in using this template `tcp://<your-pc-ip-address>:1883`
+- find `MQTT Url` configure it in using this template `tcp://<your-pc-ip-address>:1883`
 - confirm, then restart the rfid reader
 
 ## Web based Setup
