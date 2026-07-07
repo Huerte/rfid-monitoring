@@ -24,6 +24,24 @@ What to do;
 cd backend
 ```
 
+### Initial Setup
+1. Install PHP dependencies:
+   ```bash
+   composer install
+   ```
+2. Copy environment settings:
+   ```bash
+   copy .env.example .env
+   ```
+3. Generate application key:
+   ```bash
+   php artisan key:generate
+   ```
+4. Run migrations:
+   ```bash
+   php artisan migrate
+   ```
+
 ### Then run this
 ```bash
 php artisan serve --host=0.0.0.0 --port=8000
