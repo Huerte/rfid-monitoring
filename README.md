@@ -1,7 +1,5 @@
 # HOW TO RUN 🏃‍♂️‍➡️
 
-<<<<<<< Updated upstream
-=======
 ## RFID Reader Setup
 
 Get you PC ip address
@@ -21,14 +19,11 @@ What to do;
 
 ## Web based Setup
 
->>>>>>> Stashed changes
 ### Go to backend dir
 ```bash
 cd backend
 ```
 
-<<<<<<< Updated upstream
-=======
 ### Initial Setup
 1. Install dependencies:
    ```bash
@@ -47,16 +42,11 @@ cd backend
    ```bash
    php artisan migrate
    ```
->>>>>>> Stashed changes
 
 ### Running the App (Open 4 terminals in `backend` dir)
 
 **Terminal 1:** Run web server
 ```bash
-<<<<<<< Updated upstream
-php artisan rfid:listen
-```
-=======
 php artisan serve
 ```
 
@@ -84,4 +74,3 @@ npm run dev
 ```text
 http://127.0.0.1:8000/live
 ```
->>>>>>> Stashed changes
