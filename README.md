@@ -33,3 +33,5 @@ php artisan serve --host=0.0.0.0 --port=8000
 ```bash
 http://127.0.0.1:8000/api/rfid-scans
 ```
+**Sample actual output**
+<img width="1007" height="773" alt="image" src="https://github.com/user-attachments/assets/cc6809d4-e78d-4b7f-a2c1-a3c0a2b0d400" alt="Sample output"/>
