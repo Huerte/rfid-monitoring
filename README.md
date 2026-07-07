@@ -8,9 +8,7 @@ ipconfig
 ```
 
 Open the RFID android application
-[RFID APP PATH](RFID_Application/RFIDTool/RfidTool.exe)
-
-What to do;
+[RFID APP](RFID_Application/RFIDTool/RfidTool.exe), then;
 - open `System Settings`
 - find `Output Mode`, then switch on the `MQTT`. Confirm afterward.
 - go back ot `System Settings` then find `Configure Host`
@@ -43,7 +41,7 @@ cd backend
    php artisan migrate
    ```
 
-### Running the App (Open 4 terminals in `backend` dir)
+### Running the App (Open 5 terminals in `backend` dir)
 
 **Terminal 1:** Run web server
 ```bash
