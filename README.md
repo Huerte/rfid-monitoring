@@ -76,3 +76,5 @@ http://127.0.0.1:8000/live
 ```
 
 ### Screenshots
+<img width="1433" height="705" alt="image" src="https://github.com/user-attachments/assets/dedc303b-75ed-4252-bb05-8d8fac6e237f" />
+<img width="1798" height="525" alt="image" src="https://github.com/user-attachments/assets/db8e6787-4e37-4366-b02b-44f4ea328591" />
