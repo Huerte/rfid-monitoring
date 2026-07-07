@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\TagRead;
-use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -12,7 +11,7 @@ class RfidScanController extends Controller
 {
     public function store(Request $request): JsonResponse
     {
-        $tagList  = $request->input('data.tagList', []);
+        $tagList = $request->input('data.tagList', []);
         $deviceSn = $request->input('sn');
 
         $saved = 0;
@@ -23,23 +22,23 @@ class RfidScanController extends Controller
             }
 
             TagRead::create([
-                'epc'        => $epc,
-                'ant'        => (int)   ($tag['ant']       ?? 0),
-                'gpi'        => (int)   ($tag['gpi']       ?? 0),
-                'rssi'       => (float) ($tag['rssi']      ?? 0),
-                'times'      => (int)   ($tag['times']     ?? 1),
-                'pc'         => (string)($tag['pc']        ?? ''),
+                'epc' => $epc,
+                'ant' => (int)($tag['ant'] ?? 0),
+                'gpi' => (int)($tag['gpi'] ?? 0),
+                'rssi' => (float)($tag['rssi'] ?? 0),
+                'times' => (int)($tag['times'] ?? 1),
+                'pc' => (string)($tag['pc'] ?? ''),
                 'first_time' => (string)($tag['firstTime'] ?? ''),
-                'sensor'     => (string)($tag['sensor']    ?? ''),
+                'sensor' => (string)($tag['sensor'] ?? ''),
             ]);
 
             $saved++;
         }
 
         Log::info('RFID scan received', [
-            'device'    => $deviceSn,
+            'device' => $deviceSn,
             'tag_count' => $saved,
-            'tags'      => array_column($tagList, 'epc'),
+            'tags' => array_column($tagList, 'epc'),
         ]);
 
         return response()->json([

@@ -1,0 +1,39 @@
+********************* 访问设备：使用typeC-USB数据线时 *********************
+
+1.双击connect_usb.bat。（注意使用数据线时，设备为OTG调试状态，此时网口和USB device口都不可用）
+
+********************* 访问设备：使用WIFI或以太网 *********************
+
+1.用记事本打开connect.bat文件。
+
+2.修改connect_net.bat文件中的ip地址为读写器设备的真实ip地址。
+PS：设备ip地址如何获取？请查看‘扫描设备.jpg’
+
+3.双击connect_network.bat，看到类似如下提示说明连接读写器成功。
+E:\Tools\android-reader-screen-tools>adb connect 192.168.3.52
+connected to 192.168.3.52:5555
+E:\Tools\android-reader-screen-tools>scrcpy.exe
+INFO: scrcpy 1.18 <https://github.com/Genymobile/scrcpy>
+E:\Tools\android-reader-screen-tools\scrcpy-server: 1 file pushed, 0 skipped. 0.1 MB/s (37330 bytes in 0.524s)
+[server] INFO: Device: Quectel msm8909 (Android 7.1.2)
+INFO: Renderer: direct3d
+INFO: Initial texture: 1360x768
+
+********************* 远程升级 *********************
+
+1.双击update_apk.bat，看到类似如下提示说明更新成功，前提是需要先成功访问设备
+E:\Tools\android-reader-screen-tools>adb install -t -r app-update.apk
+Performing Streamed Install
+Success
+
+2.升级成功后，记得需要手动打开一下应用程序。
+
+********************* 导出盘点日志 *********************
+
+1.双击download_data.bat，看到类似如下提示说明更新成功，前提是需要先成功访问设备
+
+2.下载成功后，文件夹内会新增数据文件夹，打开即可看到盘点数据
+
+********************* 恢复出厂设置 *********************
+
+1.双击recover_config.bat，看到类似如下提示说明更新成功，前提是需要先成功访问设备
