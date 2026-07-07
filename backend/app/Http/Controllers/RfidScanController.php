@@ -49,7 +49,7 @@ class RfidScanController extends Controller
 
     public function index(): JsonResponse
     {
-        $reads = TagRead::latest()->take(20)->get();
+        $reads = TagRead::get();
 
         return response()->json($reads);
     }
