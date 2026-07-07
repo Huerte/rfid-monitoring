@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<configure>
+  <!--Encapsulate Benjamin tools.Ver 1.7.0 updated by 01/23/2015-->
+
+  <!--service information-->
+  <servicename>CiscoPCBAParserForUDTS</servicename>
+  <!--interval unit is millseconds-->
+  <interval>20000</interval>
+  <!--debug information-->
+  <EnableDebug>true</EnableDebug>
+
+  <!--Share folder information-->
+  <SharedFolder>\\dmnm0504\publish</SharedFolder>
+  <SharedUser>asia\dmnbning</SharedUser>
+  <SharedPwd>xxxxx</SharedPwd>
+
+  <Station>AOI</Station>
+  <Printer></Printer>
+
+  <!--db information-->
+  <LiveDBCon>I3mFXRXr3ICtrQQeLA70wsLaLMF8KvhTgtEn4NxPdF1zXLh2Tpt09r3FAtKdx9RWpsahYZzfUExD1i8i46Mrs+VLU50SGTKMLSiF5Oplm0iLAaL3c/c9LENr4DnhAzl1uDtYrQ/wd8Ka9Fp+JD4rgf7cotUDOCZ6qshH5+L0Yhg=</LiveDBCon>
+  <TestDBCon></TestDBCon>
+  <ReportDBCon></ReportDBCon>
+
+  <!--SP information-->
+  <GetDataSP>udpGetProjectDB</GetDataSP>
+  <SaveDataSP></SaveDataSP>
+
+ 
+  <!--Folder information-->
+  <InFolder>inBox</InFolder>
+  <OutFolder>outBox</OutFolder>
+  <BackupFolder>backup</BackupFolder>
+  <LogFolder>Log</LogFolder>
+
+  <!--Ftp information-->
+ <FtpHost></FtpHost>
+ <FtpUser></FtpUser>
+ <FtpPwd></FtpPwd>
+ <FtpRemoteDir></FtpRemoteDir>
+ <FtpFilter></FtpFilter>
+<!--ftp sftp ftps ftpes-->
+ <FtpType></FtpType>
+
+  <!--Mail information-->
+  <MailSMTP> </MailSMTP>
+  <MailFrom> </MailFrom>  
+  <MailFromDisplayName></MailFromDisplayName>
+  <MailTo></MailTo>
+  <MailCc></MailCc>
+  <MailBcc></MailBcc>
+  <MailSubject></MailSubject>
+<PrintCMD>copy $filename lpt1</PrintCMD>
+</configure>
