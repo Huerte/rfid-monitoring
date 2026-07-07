@@ -12,9 +12,9 @@ Open the RFID android application
 
 What to do;
 - open `System Settings`
-- find `Output Mode`, then switch on the `HTTP`. Confirm afterward.
+- find `Output Mode`, then switch on the `MQTT`. Confirm afterward.
 - go back ot `System Settings` then find `Configure Host`
-- find `HTTP Url` configure it in using this template `http://<your-pc-ip-address>:8000/api/rfid-scans`
+- find `HTTP Url` configure it in using this template `tcp://<your-pc-ip-address>:1883`
 - confirm, then restart the rfid reader
 
 ## Web based Setup
@@ -25,9 +25,10 @@ cd backend
 ```
 
 ### Initial Setup
-1. Install PHP dependencies:
+1. Install dependencies:
    ```bash
    composer install
+   npm install
    ```
 2. Copy environment settings:
    ```bash
@@ -42,14 +43,34 @@ cd backend
    php artisan migrate
    ```
 
-### Then run this
+### Running the App (Open 4 terminals in `backend` dir)
+
+**Terminal 1:** Run web server
 ```bash
-php artisan serve --host=0.0.0.0 --port=8000
+php artisan serve
 ```
 
-### View raw data output
+**Terminal 2:** Listen to RFID scans via MQTT
 ```bash
-http://127.0.0.1:8000/api/rfid-scans
+php artisan mqtt:listen
 ```
-**Sample actual output**
-<img width="1007" height="773" alt="image" src="https://github.com/user-attachments/assets/cc6809d4-e78d-4b7f-a2c1-a3c0a2b0d400" alt="Sample output"/>
+
+**Terminal 3:** Start WebSocket server
+```bash
+php artisan reverb:start
+```
+
+**Terminal 4:** Start a background queue worker
+```bash
+php artisan queue:work
+```
+
+**Terminal 5:** Compile frontend for real-time UI
+```bash
+npm run dev
+```
+
+### View live dashboard
+```text
+http://127.0.0.1:8000/live
+```
