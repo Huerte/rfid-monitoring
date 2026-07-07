@@ -9,4 +9,6 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::get('/rfid-scans',  [RfidScanController::class, 'index']);
-Route::post('/rfid-scans', [RfidScanController::class, 'store']);
+// Route::post('/rfid-scans', [RfidScanController::class, 'store']);
+
+Route::get('/live', fn() => view('rfid-live'));
