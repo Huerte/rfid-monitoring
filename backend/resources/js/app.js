@@ -15,12 +15,8 @@ window.Echo.channel('rfid-scans')
         row.innerHTML = `
             <td>${tag.epc}</td>
             <td>${tag.ant}</td>
-            <td>${tag.gpi}</td>
             <td>${tag.rssi}</td>
-            <td>${tag.times}</td>
-            <td>${tag.pc}</td>
             <td>${tag.first_time || '—'}</td>
-            <td>${tag.sensor || '—'}</td>
             <td>${tag.created_at}</td>
         `;
         const tbody = document.getElementById('tag-body');

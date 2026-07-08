@@ -15,17 +15,17 @@ class ListenRfidMqtt extends Command
 
     public function handle()
     {
-        $host = '127.0.0.1';
-        $port = 1883;
-        $topic = 'rfid/tagsfd71b6a';
+        $host = config('rfid.host');
+        $port = (int) config('rfid.port');
+        $topic = config('rfid.topic');
+        $clientId = config('rfid.client_id', 'rfid-listener');
 
-
-        $client = new MqttClient($host, $port, 'rfid-listener');
+        $client = new MqttClient($host, $port, $clientId);
         $client->connect();
 
         $this->info('Konected na sa MQTT broker.....');
 
-        $client->subscribe($topic, function (string $topic, string $message) {
+        $client->subscribe($topic, function (string $topic, string $message){
             $payload = json_decode($message, true);
             $tagList = $payload['data']['tagList'] ?? [];
 
@@ -34,25 +34,24 @@ class ListenRfidMqtt extends Command
                 if (!$epc) {
                     continue;
                 }
-                $read = TagRead::create([
-                    'epc'        => $epc,
-                    'ant'        => (int)($tag['ant'] ?? 0),
-                    'gpi'        => (int)($tag['gpi'] ?? 0),
-                    'rssi'       => (float)($tag['rssi'] ?? 0),
-                    'times'      => (int)($tag['times'] ?? 1),
-                    'pc'         => (string)($tag['pc'] ?? ''),
-                    'first_time' => (string) Carbon::now()->getPreciseTimestamp(3),
-                    'sensor'     => (string)($tag['sensor'] ?? ''),]);
-                    
-                // push the data to the frontend immediately
-                TagScanned::dispatch($read);
 
-                $this->line("Tag saved: {$epc}");
+                $read = TagRead::firstOrCreate(
+                    ['epc' => $epc], 
+                    [               
+                        'ant'        => (int)($tag['ant'] ?? 0),
+                        'rssi'       => (float)($tag['rssi'] ?? 0),
+                        'first_time' => (string) Carbon::now()->getPreciseTimestamp(3),
+                    ]
+                );
+
+                if ($read->wasRecentlyCreated) {
+                    TagScanned::dispatch($read);
+                    $this->line("Tag saved: {$epc}");
+                }
             }
 
         }, 0);
 
         $client->loop(true);
-
     }
 }
