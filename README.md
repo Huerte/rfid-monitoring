@@ -1,5 +1,7 @@
 # HOW TO RUN🏃‍♂️‍➡️🏃‍♀️‍➡️🏃‍➡️
-<img width="640" height="428" alt="michael-scott-wink" src="https://github.com/user-attachments/assets/a1f8db3f-806b-4ce6-8db6-f2295001e62b" />
+<p align="center">
+  <img width="640" height="428" alt="michael-scott-wink" src="https://github.com/user-attachments/assets/ec82685f-27ae-4989-8d88-c5bc3ea3ffda" />
+</p>
 
 ## Prerequisites
 
@@ -244,3 +246,9 @@ DB_CONNECTION=sqlite     # Uses local SQLite database
 ## Screenshots
 <img width="1433" height="705" alt="image" src="https://github.com/user-attachments/assets/dedc303b-75ed-4252-bb05-8d8fac6e237f" />
 <img width="1798" height="525" alt="image" src="https://github.com/user-attachments/assets/db8e6787-4e37-4366-b02b-44f4ea328591" />
+
+## You crossed the finish line 🏁
+
+<p align="center">
+  <img width="512" height="288" alt="image" src="https://github.com/user-attachments/assets/0af0a5ff-a6da-4910-915c-1ea3200287c6" />
+</p>
