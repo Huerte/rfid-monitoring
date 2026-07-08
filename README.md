@@ -1,4 +1,4 @@
-# HOW TO RUN 🏃‍♂️‍➡️
+# HOW TO RUN🏃‍♂️‍➡️🏃‍♀️‍➡️🏃‍➡️
 
 ## Prerequisites
 
@@ -148,7 +148,7 @@ tasklist | findstr mosquitto
 ```
 If not found, start it:
 ```bash
-Services -> Right-click "Mosquitto Broker" → Start
+Services -> Right-click "Mosquitto Broker" -> Start
 ```
 
 **Check 2:** Can you reach the broker?
