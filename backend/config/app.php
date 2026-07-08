@@ -65,7 +65,7 @@ return [
     |
     */
 
-    'timezone' => 'Asia/Manila',
+    'timezone' => env('APP_TIMEZONE', date_default_timezone_get() ?: 'UTC'),
 
     /*
     |--------------------------------------------------------------------------

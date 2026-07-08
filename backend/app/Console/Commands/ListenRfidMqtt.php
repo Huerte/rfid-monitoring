@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Events\TagScanned;
 use App\Models\TagRead;
 use Illuminate\Console\Command;
+use Illuminate\Support\Carbon;
 use PhpMqtt\Client\MqttClient;
 
 class ListenRfidMqtt extends Command
@@ -40,7 +41,7 @@ class ListenRfidMqtt extends Command
                     'rssi'       => (float)($tag['rssi'] ?? 0),
                     'times'      => (int)($tag['times'] ?? 1),
                     'pc'         => (string)($tag['pc'] ?? ''),
-                    'first_time' => (string)($tag['firstTime'] ?? ''),
+                    'first_time' => (string) Carbon::now()->getPreciseTimestamp(3),
                     'sensor'     => (string)($tag['sensor'] ?? ''),]);
                     
                 // push the data to the frontend immediately
