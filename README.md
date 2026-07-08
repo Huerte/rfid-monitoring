@@ -1,5 +1,5 @@
 # HOW TO RUN🏃‍♂️‍➡️🏃‍♀️‍➡️🏃‍➡️
-<img width="498" height="333" alt="image" src="https://github.com/user-attachments/assets/f2cb4208-eba7-471b-8ccb-d6bc46589375" />
+<img width="640" height="428" alt="michael-scott-wink" src="https://github.com/user-attachments/assets/a1f8db3f-806b-4ce6-8db6-f2295001e62b" />
 
 ## Prerequisites
 
