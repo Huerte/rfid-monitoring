@@ -10,7 +10,7 @@ return new class extends Migration
     {
         Schema::create('tag_reads', function (Blueprint $table) {
             $table->id();
-            $table->string('epc', 64)->index()->unique();
+            $table->string('epc', 64)->unique();
             $table->unsignedTinyInteger('ant')->default(0);
             $table->float('rssi')->default(0);
             $table->string('first_time', 64)->nullable();
