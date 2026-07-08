@@ -32,8 +32,8 @@ class TagRead extends Model
             return '—';
         }
 
-        return Carbon::createFromTimestampMs((int)$value)
-            ->setTimezone('Asia/Manila')
+        return Carbon::createFromTimestampMs((int) $value)
+            ->setTimezone(config('app.timezone'))
             ->format('Y-m-d H:i:s');
     }
 }
