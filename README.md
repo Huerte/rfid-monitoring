@@ -250,5 +250,5 @@ DB_CONNECTION=sqlite     # Uses local SQLite database
 ## You crossed the finish line 🏁
 
 <p align="center">
-  <img width="512" height="288" alt="image" src="https://github.com/user-attachments/assets/0af0a5ff-a6da-4910-915c-1ea3200287c6" />
+  <img width="498" height="331" alt="cheers-fireworks" src="https://github.com/user-attachments/assets/c42dc4b4-2325-4d7a-9f3e-37dffac74307" />
 </p>
