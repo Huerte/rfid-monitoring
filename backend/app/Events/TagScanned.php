@@ -33,4 +33,18 @@ class TagScanned implements ShouldBroadcastNow
     {
         return 'tag.scanned';
     }
+
+    public function broadcastWith(): array
+    {
+        return [
+            'tagRead' => [
+                'epc' => $this->tagRead->epc,
+                'ant' => $this->tagRead->ant,
+                'rssi' => $this->tagRead->rssi,
+                'first_time_exact' => $this->tagRead->first_time,
+                'created_at_time' => \Carbon\Carbon::parse($this->tagRead->created_at)->format('H:i:s'),
+                'search_key' => strtolower($this->tagRead->epc . ' ' . $this->tagRead->ant . ' ' . $this->tagRead->rssi),
+            ]
+        ];
+    }
 }
