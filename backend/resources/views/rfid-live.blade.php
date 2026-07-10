@@ -143,8 +143,9 @@
         }
 
         col.c-num   { width: 46px; }
-        col.c-epc   {width: 350px; }
+        col.c-epc   { width: 350px; }
         col.c-first { }
+        col.c-count { width: 120px; }
         col.c-ant   { width: 120px; }
         col.c-rssi  { width: 120px; }
         col.c-saved { width: 300px; }
@@ -318,6 +319,7 @@
                 <col class="c-num">
                 <col class="c-epc">
                 <col class="c-first">
+                <col class="c-count">
                 <col class="c-ant">
                 <col class="c-rssi">
                 <col class="c-saved">
@@ -326,10 +328,11 @@
                 <tr>
                     <th class="c-num">#</th>
                     <th class="sortable" onclick="sortTable(1, this)">Tag ID (EPC)</th>
-                    <th class="sortable" onclick="sortTable(4, this)">First Detected</th>
-                    <th class="sortable center" onclick="sortTable(2, this)">Antenna</th>
-                    <th class="sortable right" onclick="sortTable(3, this)">Signal (RSSI)</th>
-                    <th class="sortable" onclick="sortTable(5, this)">Saved At</th>
+                    <th class="sortable" onclick="sortTable(2, this)">First Detected</th>
+                    <th class="sortable" onclick="sortTable(3, this)">Count</th>
+                    <th class="sortable" onclick="sortTable(4, this)">Antenna</th>
+                    <th class="sortable" onclick="sortTable(5, this)">Signal (RSSI)</th>
+                    <th class="sortable" onclick="sortTable(6, this)">Saved At</th>
                 </tr>
             </thead>
             <tbody id="tag-body">
@@ -345,13 +348,14 @@
                         <td class="c-num">{{ $i + 1 }}</td>
                         <td>{{ $tag->epc }}</td>
                         <td>{{ $tag->first_time }}</td>
-                        <td class="center">{{ $tag->ant }}</td>
-                        <td class="right">{{ $tag->rssi }} dBm</td>
+                        <td>{{ $tag->count }}</td>
+                        <td>{{ $tag->ant }}</td>
+                        <td>{{ $tag->rssi }} dBm</td>
                         <td>{{ \Carbon\Carbon::parse($tag->created_at)->format('H:i:s') }}</td>
                     </tr>
                 @empty
                     <tr class="empty-state">
-                        <td colspan="6">No tag records found.</td>
+                        <td colspan="7">No tag records found.</td>
                     </tr>
                 @endforelse
             </tbody>
