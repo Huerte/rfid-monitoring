@@ -52,8 +52,9 @@ window.Echo.channel('rfid-scans')
             <td class="c-num">1</td>
             <td>${tag.epc}</td>
             <td>${tag.first_time_exact || '—'}</td>
-            <td class="center">${tag.ant}</td>
-            <td class="right">${tag.rssi} dBm</td>
+            <td>${tag.count ?? 1}</td>
+            <td>${tag.ant}</td>
+            <td>${tag.rssi} dBm</td>
             <td>${tag.created_at_time}</td>
         `;
 
