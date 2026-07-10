@@ -12,11 +12,13 @@ class TagRead extends Model
         'ant',
         'rssi',
         'first_time',
+        'count',
     ];
 
     protected $casts = [
         'rssi' => 'float',
         'ant'  => 'integer',
+        'count' => 'integer',
     ];
 
     // converts the millisecond timestamp from the reader to a readable datetime

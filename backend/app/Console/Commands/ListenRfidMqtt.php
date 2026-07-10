@@ -36,18 +36,24 @@ class ListenRfidMqtt extends Command
                 }
 
                 $read = TagRead::firstOrCreate(
-                    ['epc' => $epc], 
-                    [               
+                    ['epc' => $epc],
+                    [
                         'ant'        => (int)($tag['ant'] ?? 0),
                         'rssi'       => (float)($tag['rssi'] ?? 0),
                         'first_time' => (string) Carbon::now()->getPreciseTimestamp(3),
+                        'count'      => 1,
                     ]
                 );
 
                 if ($read->wasRecentlyCreated) {
-                    TagScanned::dispatch($read);
                     $this->line("Tag saved: {$epc}");
+                } else {
+                    $read->increment('count');
+                    $read->refresh();
+                    $this->line("Tag count updated: {$epc} -> {$read->count}");
                 }
+
+                TagScanned::dispatch($read);
             }
 
         }, 0);
