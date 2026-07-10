@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RFID Tag Reader</title>
+    @vite(['resources/js/app.js'])
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -142,11 +143,11 @@
         }
 
         col.c-num   { width: 46px; }
-        col.c-epc   { }
-        col.c-ant   { width: 110px; }
+        col.c-epc   {width: 350px; }
+        col.c-first { }
+        col.c-ant   { width: 120px; }
         col.c-rssi  { width: 120px; }
-        col.c-first { width: 170px; }
-        col.c-saved { width: 100px; }
+        col.c-saved { width: 300px; }
 
         thead { position: sticky; top: 0; z-index: 10; }
 
@@ -316,18 +317,18 @@
             <colgroup>
                 <col class="c-num">
                 <col class="c-epc">
+                <col class="c-first">
                 <col class="c-ant">
                 <col class="c-rssi">
-                <col class="c-first">
                 <col class="c-saved">
             </colgroup>
             <thead>
                 <tr>
                     <th class="c-num">#</th>
                     <th class="sortable" onclick="sortTable(1, this)">Tag ID (EPC)</th>
+                    <th class="sortable" onclick="sortTable(4, this)">First Detected</th>
                     <th class="sortable center" onclick="sortTable(2, this)">Antenna</th>
                     <th class="sortable right" onclick="sortTable(3, this)">Signal (RSSI)</th>
-                    <th class="sortable" onclick="sortTable(4, this)">First Detected</th>
                     <th class="sortable" onclick="sortTable(5, this)">Saved At</th>
                 </tr>
             </thead>
@@ -343,9 +344,9 @@
                         title="Double-click to copy EPC">
                         <td class="c-num">{{ $i + 1 }}</td>
                         <td>{{ $tag->epc }}</td>
+                        <td>{{ $tag->first_time }}</td>
                         <td class="center">{{ $tag->ant }}</td>
                         <td class="right">{{ $tag->rssi }} dBm</td>
-                        <td>{{ \Carbon\Carbon::parse($tag->first_time)->diffForHumans() }}</td>
                         <td>{{ \Carbon\Carbon::parse($tag->created_at)->format('H:i:s') }}</td>
                     </tr>
                 @empty
@@ -436,7 +437,7 @@
 
     /* ── Export CSV ── */
     function exportCSV() {
-        const headers = ['#', 'Tag ID (EPC)', 'Antenna', 'Signal (RSSI)', 'First Detected', 'Saved At'];
+        const headers = ['#', 'Tag ID (EPC)', 'First Detected', 'Antenna', 'Signal (RSSI)', 'Saved At'];
         const rows = Array.from(tbody.querySelectorAll('tr:not(.empty-state):not(.hidden)'))
             .map(r => Array.from(r.cells).map(c => `"${c.textContent.trim().replace(/"/g,'""')}"`).join(','));
         const csv = [headers.join(','), ...rows].join('\n');
