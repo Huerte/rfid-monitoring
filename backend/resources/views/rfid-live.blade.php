@@ -89,7 +89,7 @@
             width: 100%;
             height: 26px;
             padding: 0 8px 0 28px;
-            border: 1px solid #d0d0d0;
+            border: 1px solid #d0d0d0;  x
             border-radius: 4px;
             font-size: 12px;
             font-family: inherit;
@@ -132,7 +132,7 @@
         /* ══ Grid ══ */
         .grid-wrap {
             flex: 1;
-            overflow: auto;
+            overflow: hidden;
             background: #fff;
         }
 
@@ -143,12 +143,11 @@
         }
 
         col.c-num   { width: 46px; }
-        col.c-epc   { width: 350px; }
-        col.c-first { }
-        col.c-count { width: 120px; }
-        col.c-ant   { width: 120px; }
+        col.c-epc   { }
+        col.c-ant   { width: 110px; }
         col.c-rssi  { width: 120px; }
-        col.c-saved { width: 300px; }
+        col.c-first { width: 170px; }
+        col.c-saved { width: 100px; }
 
         thead { position: sticky; top: 0; z-index: 10; }
 
@@ -162,6 +161,8 @@
             color: #444;
             text-align: left;
             white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
             user-select: none;
             cursor: pointer;
             letter-spacing: 0.02em;
@@ -328,11 +329,10 @@
                 <tr>
                     <th class="c-num">#</th>
                     <th class="sortable" onclick="sortTable(1, this)">Tag ID (EPC)</th>
-                    <th class="sortable" onclick="sortTable(2, this)">First Detected</th>
-                    <th class="sortable" onclick="sortTable(3, this)">Count</th>
-                    <th class="sortable" onclick="sortTable(4, this)">Antenna</th>
-                    <th class="sortable" onclick="sortTable(5, this)">Signal (RSSI)</th>
-                    <th class="sortable" onclick="sortTable(6, this)">Saved At</th>
+                    <th class="sortable center" onclick="sortTable(2, this)">Antenna</th>
+                    <th class="sortable right" onclick="sortTable(3, this)">Signal (RSSI)</th>
+                    <th class="sortable" onclick="sortTable(4, this)">First Detected</th>
+                    <th class="sortable" onclick="sortTable(5, this)">Saved At</th>
                 </tr>
             </thead>
             <tbody id="tag-body">
@@ -347,10 +347,9 @@
                         title="Double-click to copy EPC">
                         <td class="c-num">{{ $i + 1 }}</td>
                         <td>{{ $tag->epc }}</td>
-                        <td>{{ $tag->first_time }}</td>
-                        <td>{{ $tag->count }}</td>
-                        <td>{{ $tag->ant }}</td>
-                        <td>{{ $tag->rssi }} dBm</td>
+                        <td class="center">{{ $tag->ant }}</td>
+                        <td class="right">{{ $tag->rssi }} dBm</td>
+                        <td>{{ \Carbon\Carbon::parse($tag->first_time)->diffForHumans() }}</td>
                         <td>{{ \Carbon\Carbon::parse($tag->created_at)->format('H:i:s') }}</td>
                     </tr>
                 @empty
