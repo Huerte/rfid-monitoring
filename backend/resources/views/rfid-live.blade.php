@@ -25,7 +25,6 @@
             width: 100vw;
         }
 
-        /* ══ Title bar ══ */
         .titlebar {
             display: flex;
             align-items: center;
@@ -59,7 +58,6 @@
             font-weight: 500;
         }
 
-        /* ══ Toolbar ══ */
         .toolbar {
             display: flex;
             align-items: center;
@@ -129,7 +127,6 @@
         }
         .record-count b { color: #333; }
 
-        /* ══ Grid ══ */
         .grid-wrap {
             flex: 1;
             overflow: hidden;
@@ -220,7 +217,6 @@
         td.center { text-align: center; }
         td.right  { text-align: right; }
 
-        /* ══ Status bar ══ */
         .statusbar {
             display: flex;
             align-items: center;
@@ -237,7 +233,6 @@
         .statusbar .hint { margin-left: auto; color: #bbb; }
         .statusbar #selected-info b { color: #1a6fc4; }
 
-        /* ══ Toast ══ */
         #toast {
             position: fixed;
             bottom: 34px;
@@ -256,7 +251,6 @@
         }
         #toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
-        /* ══ Empty state ══ */
         .empty-state td {
             text-align: center;
             color: #bbb !important;
@@ -275,7 +269,6 @@
 
 <div class="app">
 
-    <!-- Title bar -->
     <div class="titlebar">
         <div class="titlebar-left">
             <span class="titlebar-title">RFID Tag Reader</span>
@@ -283,7 +276,6 @@
         </div>
     </div>
 
-    <!-- Toolbar / search -->
     <div class="toolbar">
         <div class="search-wrap">
             <svg width="13" height="13" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
@@ -313,7 +305,6 @@
         </span>
     </div>
 
-    <!-- Grid -->
     <div class="grid-wrap">
         <table id="tag-table">
             <colgroup>
@@ -361,7 +352,6 @@
         </table>
     </div>
 
-    <!-- Status bar -->
     <div class="statusbar">
         <span>{{ $total }} records</span>
         <span class="sep">|</span>
@@ -375,7 +365,6 @@
 <script>
     const tbody = document.getElementById('tag-body');
 
-    /* ── Select ── */
     function selectRow(row) {
         if (row.classList.contains('empty-state')) return;
         tbody.querySelectorAll('tr.selected').forEach(r => r.classList.remove('selected'));
@@ -392,7 +381,6 @@
         navigator.clipboard.writeText(epc).then(() => toast('✓ Copied: ' + epc));
     }
 
-    /* ── Toast ── */
     let toastT;
     function toast(msg) {
         const el = document.getElementById('toast');
@@ -402,7 +390,6 @@
         toastT = setTimeout(() => el.classList.remove('show'), 2200);
     }
 
-    /* ── Filter ── */
     function filterTable(q) {
         q = q.toLowerCase().trim();
         let vis = 0;
@@ -414,7 +401,6 @@
         document.getElementById('visibleCount').textContent = vis;
     }
 
-    /* ── Sort ── */
     let sortState = { col: -1, dir: 'asc' };
     function sortTable(col, th) {
         const dir = (sortState.col === col && sortState.dir === 'asc') ? 'desc' : 'asc';
@@ -438,7 +424,6 @@
         rows.forEach((r, i) => { tbody.appendChild(r); r.cells[0].textContent = i + 1; });
     }
 
-    /* ── Export CSV ── */
     function exportCSV() {
         const headers = ['#', 'Tag ID (EPC)', 'First Detected', 'Antenna', 'Signal (RSSI)', 'Saved At'];
         const rows = Array.from(tbody.querySelectorAll('tr:not(.empty-state):not(.hidden)'))
