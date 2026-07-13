@@ -13,6 +13,7 @@ return new class extends Migration
             $table->string('epc', 64)->unique();
             $table->unsignedTinyInteger('ant')->default(0);
             $table->float('rssi')->default(0);
+            $table->unsignedInteger('count')->default(1);
             $table->string('first_time', 64)->nullable();
             $table->timestamps();
         });

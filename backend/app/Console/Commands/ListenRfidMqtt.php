@@ -48,8 +48,11 @@ class ListenRfidMqtt extends Command
                 if ($read->wasRecentlyCreated) {
                     $this->line("Tag saved: {$epc}");
                 } else {
-                    $read->increment('count');
-                    $read->refresh();
+                    $read->count += 1;
+                    $read->ant = (int)($tag['ant'] ?? $read->ant);
+                    $read->rssi = ('float')($tag['rssi'] ?? $read->rssi);
+                    $read->save();
+
                     $this->line("Tag count updated: {$epc} -> {$read->count}");
                 }
 
