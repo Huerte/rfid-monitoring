@@ -5,11 +5,11 @@
 
 ## Prerequisites
 
-- **PHP**
-- **Node.js**
-- **Composer**
-- **MQTT Broker (Mosquitto - https://mosquitto.org/download/)**
-- **RFID Reader**
+- PHP
+- Node.js
+- Composer
+- MQTT Broker (Mosquitto - https://mosquitto.org/download/)
+- RFID Reader
 
 ---
 
