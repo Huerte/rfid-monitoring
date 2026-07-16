@@ -131,6 +131,15 @@
             flex: 1;
             overflow: hidden;
             background: #fff;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .grid-scroll {
+            flex: 1;
+            width: 100%;
+            overflow-x: auto;
+            overflow-y: auto;
         }
 
         table {
@@ -140,11 +149,11 @@
         }
 
         col.c-num   { width: 46px; }
-        col.c-epc   { }
-        col.c-ant   { width: 110px; }
-        col.c-rssi  { width: 120px; }
-        col.c-first { width: 170px; }
-        col.c-saved { width: 100px; }
+        col.c-epc   { /* fills remaining space automatically */ }
+        col.c-ant   { width: 15%; }
+        col.c-rssi  { width: 15%; }
+        col.c-first { width: 15%; }
+        col.c-saved { width: 15%; }
 
         thead { position: sticky; top: 0; z-index: 10; }
 
@@ -155,7 +164,7 @@
             padding: 7px 10px;
             font-size: 11px;
             font-weight: 600;
-            color: #444;
+            color: #211ed5ff;
             text-align: left;
             white-space: nowrap;
             overflow: hidden;
@@ -261,6 +270,7 @@
         }
 
         tr.hidden { display: none; }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
@@ -293,11 +303,11 @@
             Export CSV
         </button>
 
-        <button class="toolbar-btn" onclick="location.reload()">
-            <svg width="12" height="12" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+        <button class="toolbar-btn" id="clear-btn" onclick="clearTableData(this)">
+            <svg id="clear-icon" width="12" height="12" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M4 12a8 8 0 1 0 1.5-4.8"/><polyline points="1 6 4 12 10 9"/>
             </svg>
-            Refresh
+            <span id="clear-text">Clear</span>
         </button>
 
         <span class="record-count">
@@ -306,14 +316,14 @@
     </div>
 
     <div class="grid-wrap">
+        <div class="grid-scroll">
         <table id="tag-table">
             <colgroup>
                 <col class="c-num">
                 <col class="c-epc">
-                <col class="c-first">
-                <col class="c-count">
                 <col class="c-ant">
                 <col class="c-rssi">
+                <col class="c-first">
                 <col class="c-saved">
             </colgroup>
             <thead>
@@ -345,11 +355,12 @@
                     </tr>
                 @empty
                     <tr class="empty-state">
-                        <td colspan="7">No tag records found.</td>
+                        <td colspan="6">No tag records found.</td>
                     </tr>
                 @endforelse
             </tbody>
         </table>
+        </div>
     </div>
 
     <div class="statusbar">
@@ -434,6 +445,32 @@
             download: 'rfid-tags.csv'
         });
         a.click();
+    }
+
+    function clearTableData(btn) {
+        const icon = document.getElementById('clear-icon');
+        const text = document.getElementById('clear-text');
+        
+        btn.disabled = true;
+        text.textContent = 'Clearing...';
+        icon.style.animation = 'spin 1s linear infinite';
+        
+        setTimeout(() => {
+            btn.disabled = false;
+            text.textContent = 'Clear';
+            icon.style.animation = '';
+            
+            // Clear table on UI
+            tbody.innerHTML = '<tr class="empty-state"><td colspan="6">No tag records found.</td></tr>';
+            document.getElementById('visibleCount').textContent = '0';
+            
+            const statusRecords = document.querySelector('.statusbar span:first-child');
+            if (statusRecords) statusRecords.textContent = '0 records';
+            
+            document.querySelector('.record-count').innerHTML = 'Showing <b id="visibleCount">0</b> of 0';
+            
+            toast('Table cleared');
+        }, 2000);
     }
 </script>
 
