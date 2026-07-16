@@ -164,7 +164,7 @@
             padding: 7px 10px;
             font-size: 11px;
             font-weight: 600;
-            color: #444;
+            color: #211ed5ff;
             text-align: left;
             white-space: nowrap;
             overflow: hidden;
