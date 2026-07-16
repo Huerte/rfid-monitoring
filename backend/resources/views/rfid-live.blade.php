@@ -131,6 +131,15 @@
             flex: 1;
             overflow: hidden;
             background: #fff;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .grid-scroll {
+            flex: 1;
+            width: 100%;
+            overflow-x: auto;
+            overflow-y: auto;
         }
 
         table {
@@ -140,11 +149,11 @@
         }
 
         col.c-num   { width: 46px; }
-        col.c-epc   { }
-        col.c-ant   { width: 110px; }
-        col.c-rssi  { width: 120px; }
-        col.c-first { width: 170px; }
-        col.c-saved { width: 100px; }
+        col.c-epc   { /* fills remaining space automatically */ }
+        col.c-ant   { width: 15%; }
+        col.c-rssi  { width: 15%; }
+        col.c-first { width: 15%; }
+        col.c-saved { width: 15%; }
 
         thead { position: sticky; top: 0; z-index: 10; }
 
@@ -306,14 +315,14 @@
     </div>
 
     <div class="grid-wrap">
+        <div class="grid-scroll">
         <table id="tag-table">
             <colgroup>
                 <col class="c-num">
                 <col class="c-epc">
-                <col class="c-first">
-                <col class="c-count">
                 <col class="c-ant">
                 <col class="c-rssi">
+                <col class="c-first">
                 <col class="c-saved">
             </colgroup>
             <thead>
@@ -345,11 +354,12 @@
                     </tr>
                 @empty
                     <tr class="empty-state">
-                        <td colspan="7">No tag records found.</td>
+                        <td colspan="6">No tag records found.</td>
                     </tr>
                 @endforelse
             </tbody>
         </table>
+        </div>
     </div>
 
     <div class="statusbar">
