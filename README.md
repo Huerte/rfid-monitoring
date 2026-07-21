@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # HOW TO RUN🏃‍♂️‍➡️🏃‍♀️‍➡️🏃‍➡️
 <p align="center">
   <img width="640" height="428" alt="michael-scott-wink" src="https://github.com/user-attachments/assets/ec82685f-27ae-4989-8d88-c5bc3ea3ffda" />
@@ -60,10 +61,35 @@ To run everything wireless:
 ## Step 2: Backend Setup
 
 ### Go to backend directory
+=======
+# HOW TO RUN 🏃‍♂️‍➡️
+
+## RFID Reader Setup
+
+Get you PC ip address
+```bash
+ipconfig
+```
+
+Open the RFID android application
+[RFID APP PATH](RFID_Application/RFIDTool/RfidTool.exe)
+
+What to do;
+- open `System Settings`
+- find `Output Mode`, then switch on the `MQTT`. Confirm afterward.
+- go back ot `System Settings` then find `Configure Host`
+- find `HTTP Url` configure it in using this template `tcp://<your-pc-ip-address>:1883`
+- confirm, then restart the rfid reader
+
+## Web based Setup
+
+### Go to backend dir
+>>>>>>> 557081a (chore: no changes LOL)
 ```bash
 cd backend
 ```
 
+<<<<<<< HEAD
 ### Install dependencies
 ```bash
 composer install
@@ -109,20 +135,63 @@ Make sure your MQTT broker is running. If you don't see this message, check:
 - Firewall allows port 1883
 
 ### Terminal 3: WebSocket Server (Real-time updates)
+=======
+### Initial Setup
+1. Install dependencies:
+   ```bash
+   composer install
+   npm install
+   ```
+2. Copy environment settings:
+   ```bash
+   copy .env.example .env
+   ```
+3. Generate application key:
+   ```bash
+   php artisan key:generate
+   ```
+4. Run migrations:
+   ```bash
+   php artisan migrate
+   ```
+
+### Running the App (Open 4 terminals in `backend` dir)
+
+**Terminal 1:** Run web server
+```bash
+php artisan serve
+```
+
+**Terminal 2:** Listen to RFID scans via MQTT
+```bash
+php artisan mqtt:listen
+```
+
+**Terminal 3:** Start WebSocket server
+>>>>>>> 557081a (chore: no changes LOL)
 ```bash
 php artisan reverb:start
 ```
 
+<<<<<<< HEAD
 ### Terminal 4: Background Queue (Processes events)
+=======
+**Terminal 4:** Start a background queue worker
+>>>>>>> 557081a (chore: no changes LOL)
 ```bash
 php artisan queue:work
 ```
 
+<<<<<<< HEAD
 ### Terminal 5: Frontend Build (Optional, for UI development)
+=======
+**Terminal 5:** Compile frontend for real-time UI
+>>>>>>> 557081a (chore: no changes LOL)
 ```bash
 npm run dev
 ```
 
+<<<<<<< HEAD
 ---
 
 ## Step 4: View the API
@@ -252,3 +321,11 @@ DB_CONNECTION=sqlite     # Uses local SQLite database
 <p align="center">
   <img width="498" height="331" alt="cheers-fireworks" src="https://github.com/user-attachments/assets/c42dc4b4-2325-4d7a-9f3e-37dffac74307" />
 </p>
+=======
+### View live dashboard
+```text
+http://127.0.0.1:8000/live
+```
+
+### Screenshots
+>>>>>>> 557081a (chore: no changes LOL)
