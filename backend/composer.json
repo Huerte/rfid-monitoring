@@ -14,11 +14,7 @@
         "laravel/reverb": "^1.0",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^3.0",
-<<<<<<< HEAD
         "php-mqtt/client": "*"
-=======
-        "php-mqtt/client": "^2.3"
->>>>>>> 557081a (chore: no changes LOL)
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
