@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # HOW TO RUN🏃‍♂️‍➡️🏃‍♀️‍➡️🏃‍➡️
 <p align="center">
   <img width="640" height="428" alt="michael-scott-wink" src="https://github.com/user-attachments/assets/ec82685f-27ae-4989-8d88-c5bc3ea3ffda" />
